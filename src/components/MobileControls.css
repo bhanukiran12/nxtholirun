@@ -1,0 +1,62 @@
+/* ============================================================
+   MobileControls.css
+   ============================================================ */
+
+.mobile-controls {
+  position: absolute;
+  bottom: 16px;
+  left: 0;
+  right: 0;
+  display: none;           /* hidden by default; shown on touch */
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 12px;
+  z-index: 30;
+  gap: 8px;
+}
+
+/* Show on touch/mobile screens */
+@media (max-width: 600px), (pointer: coarse) {
+  .mobile-controls {
+    display: flex;
+  }
+}
+
+.mobile-controls__btn {
+  background: rgba(255,255,255,0.15);
+  border: 2px solid rgba(255,255,255,0.3);
+  border-radius: 14px;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 900;
+  padding: 14px 20px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  user-select: none;
+  transition: background 0.1s ease, transform 0.1s ease;
+  min-width: 64px;
+  text-align: center;
+}
+
+.mobile-controls__btn:active {
+  background: rgba(255,255,255,0.35);
+  transform: scale(0.93);
+}
+
+.mobile-controls__btn--left,
+.mobile-controls__btn--right {
+  flex: 0 0 64px;
+}
+
+.mobile-controls__btn--jump {
+  flex: 1;
+  background: linear-gradient(135deg, rgba(255,64,129,0.4), rgba(255,109,0,0.4));
+  border-color: rgba(255,64,129,0.6);
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+.mobile-controls__btn--jump:active {
+  background: linear-gradient(135deg, rgba(255,64,129,0.7), rgba(255,109,0,0.7));
+}

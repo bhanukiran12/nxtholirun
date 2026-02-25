@@ -1,0 +1,138 @@
+/* ============================================================
+   HoliBackground.css
+   ============================================================ */
+
+.holi-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+  border-radius: inherit;
+}
+
+/* ── Sky ──────────────────────────────────────────────────── */
+.holi-bg__sky {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    #1a0533 0%,
+    #2d0a5e 20%,
+    #4a0e8f 40%,
+    #6b1fa8 60%,
+    #8b2fc9 75%,
+    #a855d4 85%,
+    #c77dff 100%
+  );
+  animation: skyShift 8s ease-in-out infinite alternate;
+}
+
+@keyframes skyShift {
+  0%   { filter: hue-rotate(0deg)   brightness(1);   }
+  50%  { filter: hue-rotate(30deg)  brightness(1.1); }
+  100% { filter: hue-rotate(-20deg) brightness(0.95); }
+}
+
+/* ── Floating clouds ──────────────────────────────────────── */
+.holi-bg__cloud {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(20px);
+  animation: cloudDrift 6s ease-in-out infinite alternate;
+}
+
+@keyframes cloudDrift {
+  from { transform: translateX(-15px) scale(1);    }
+  to   { transform: translateX(15px)  scale(1.15); }
+}
+
+/* ── Track ────────────────────────────────────────────────── */
+.holi-bg__track {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  /* Three-lane road */
+  background: linear-gradient(
+    90deg,
+    rgba(0,0,0,0.25) 0%,
+    rgba(0,0,0,0.15) 16.66%,
+    rgba(0,0,0,0.08) 33.33%,
+    rgba(0,0,0,0.15) 50%,
+    rgba(0,0,0,0.08) 66.66%,
+    rgba(0,0,0,0.15) 83.33%,
+    rgba(0,0,0,0.25) 100%
+  );
+}
+
+/* Scrolling dashed center lines */
+.holi-bg__road-lines {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    180deg,
+    transparent 0px,
+    transparent 30px,
+    rgba(255,255,255,0.12) 30px,
+    rgba(255,255,255,0.12) 50px
+  );
+  animation: roadScroll linear infinite;
+}
+
+@keyframes roadScroll {
+  from { background-position: 0 0;    }
+  to   { background-position: 0 80px; }
+}
+
+/* Lane dividers */
+.holi-bg__lane-divider {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: repeating-linear-gradient(
+    180deg,
+    rgba(255,255,255,0.25) 0px,
+    rgba(255,255,255,0.25) 20px,
+    transparent 20px,
+    transparent 40px
+  );
+  animation: roadScroll 0.8s linear infinite;
+}
+
+.holi-bg__lane-divider--left  { left:  33.33%; }
+.holi-bg__lane-divider--right { left:  66.66%; }
+
+/* ── Particles ────────────────────────────────────────────── */
+.holi-bg__particle {
+  position: absolute;
+  top: -20px;
+  border-radius: 50%;
+  opacity: 0;
+  animation: particleFall linear infinite;
+  filter: blur(1px);
+}
+
+@keyframes particleFall {
+  0%   { top: -20px; opacity: 0;   transform: translateX(0)    rotate(0deg);   }
+  10%  {              opacity: 0.7; }
+  90%  {              opacity: 0.5; }
+  100% { top: 110%;  opacity: 0;   transform: translateX(30px) rotate(360deg); }
+}
+
+/* ── Ground ───────────────────────────────────────────────── */
+.holi-bg__ground {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(255,100,0,0.15) 40%,
+    rgba(255,50,100,0.25) 100%
+  );
+  border-top: 2px solid rgba(255,200,100,0.3);
+}

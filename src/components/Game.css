@@ -1,0 +1,61 @@
+/* ============================================================
+   Game.css – Game canvas container
+   ============================================================ */
+
+.game-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  background: #0d0020;
+  overflow: hidden;
+}
+
+.game-canvas {
+  position: relative;
+  width: 100%;
+  max-width: 100vw;
+  overflow: hidden;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.game-lanes {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(var(--lane-count, 6), 1fr);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.game-lane {
+  position: relative;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.06) 0%,
+    rgba(255, 255, 255, 0.02) 45%,
+    rgba(255, 255, 255, 0.08) 100%
+  );
+}
+
+.game-lane::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    180deg,
+    transparent 0px,
+    transparent 24px,
+    rgba(255, 255, 255, 0.12) 24px,
+    rgba(255, 255, 255, 0.12) 44px
+  );
+  mix-blend-mode: screen;
+  opacity: 0.35;
+}
+
+.game-lane:not(:last-child) {
+  border-right: 2px solid rgba(255, 255, 255, 0.22);
+}

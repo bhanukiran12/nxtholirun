@@ -1,0 +1,282 @@
+/* ============================================================
+   StartScreen.css
+   ============================================================ */
+
+.start-screen {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  overflow: hidden;
+}
+
+/* ── Animated rings ───────────────────────────────────────── */
+.start-screen__rings {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.start-screen__ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  border: 3px solid hsl(calc(var(--i) * 90), 80%, 60%);
+  opacity: 0;
+  animation: ringExpand 3s ease-out infinite;
+  animation-delay: calc(var(--i) * 0.75s);
+  transform: translate(-50%, -50%);
+}
+
+@keyframes ringExpand {
+  0%   { width: 40px;  height: 40px;  opacity: 0.8; }
+  100% { width: 600px; height: 600px; opacity: 0;   }
+}
+
+/* ── Content card ─────────────────────────────────────────── */
+.start-screen__content {
+  position: relative;
+  background: linear-gradient(145deg, rgba(26,5,51,0.95), rgba(45,10,94,0.95));
+  border: 2px solid rgba(255,255,255,0.15);
+  border-radius: 24px;
+  padding: 32px 24px;
+  width: min(360px, 92%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  box-shadow:
+    0 0 60px rgba(168,85,247,0.5),
+    0 20px 60px rgba(0,0,0,0.7);
+  animation: contentSlideUp 0.6s cubic-bezier(0.34,1.56,0.64,1);
+}
+
+@keyframes contentSlideUp {
+  from { transform: translateY(40px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+/* ── Logo ─────────────────────────────────────────────────── */
+.start-screen__logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.start-screen__logo-icon {
+  font-size: 48px;
+  animation: logoSpin 4s linear infinite;
+  filter: drop-shadow(0 0 12px rgba(255,100,0,0.8));
+}
+
+@keyframes logoSpin {
+  from { filter: hue-rotate(0deg)   drop-shadow(0 0 12px rgba(255,100,0,0.8)); }
+  to   { filter: hue-rotate(360deg) drop-shadow(0 0 12px rgba(255,100,0,0.8)); }
+}
+
+.start-screen__logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.start-screen__logo-nxt {
+  font-size: 14px;
+  font-weight: 900;
+  color: rgba(255,255,255,0.7);
+  letter-spacing: 4px;
+  font-family: 'Courier New', monospace;
+}
+
+.start-screen__logo-holi {
+  font-size: 36px;
+  font-weight: 900;
+  background: linear-gradient(90deg, #FF4081, #FF6D00, #FFEA00, #00E676, #00B0FF, #D500F9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 2px;
+  font-family: 'Courier New', monospace;
+  animation: holiShift 3s linear infinite;
+  background-size: 200% auto;
+}
+
+@keyframes holiShift {
+  from { background-position: 0% center;   }
+  to   { background-position: 200% center; }
+}
+
+.start-screen__logo-run {
+  font-size: 22px;
+  font-weight: 900;
+  color: #FFEA00;
+  letter-spacing: 6px;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 0 10px rgba(255,234,0,0.6);
+}
+
+/* ── Tagline ──────────────────────────────────────────────── */
+.start-screen__tagline {
+  font-size: 12px;
+  color: rgba(255,255,255,0.65);
+  text-align: center;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ── High score ───────────────────────────────────────────── */
+.start-screen__highscore {
+  font-size: 13px;
+  color: rgba(255,255,255,0.7);
+  font-family: 'Courier New', monospace;
+}
+
+.start-screen__highscore-val {
+  color: #FF4081;
+  font-weight: 900;
+  font-size: 16px;
+}
+
+/* ── Controls ─────────────────────────────────────────────── */
+.start-screen__controls {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+  background: rgba(0,0,0,0.3);
+  border-radius: 10px;
+  padding: 10px 16px;
+  width: 100%;
+}
+
+.start-screen__control {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: rgba(255,255,255,0.7);
+}
+
+.start-screen__keys {
+  display: flex;
+  gap: 3px;
+}
+
+.start-screen__key-space {
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 4px;
+  padding: 2px 10px;
+  font-size: 10px;
+  font-family: 'Courier New', monospace;
+  color: #fff;
+}
+
+/* ── Power-up legend ──────────────────────────────────────── */
+.start-screen__powerups {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.start-screen__powerup-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  color: rgba(255,255,255,0.7);
+  background: rgba(0,0,0,0.3);
+  border-radius: 8px;
+  padding: 4px 8px;
+}
+
+/* ── Start button ─────────────────────────────────────────── */
+.start-screen__btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #FF4081, #FF6D00);
+  color: #fff;
+  border: none;
+  border-radius: 14px;
+  padding: 14px 32px;
+  font-size: 16px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-family: 'Courier New', monospace;
+  box-shadow: 0 4px 20px rgba(255,64,129,0.5);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  width: 100%;
+  justify-content: center;
+  animation: btnPulse 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes btnPulse {
+  from { box-shadow: 0 4px 20px rgba(255,64,129,0.5); }
+  to   { box-shadow: 0 6px 30px rgba(255,64,129,0.9); }
+}
+
+.start-screen__btn:hover {
+  transform: translateY(-2px) scale(1.02);
+}
+
+.start-screen__btn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* ── Hint ─────────────────────────────────────────────────── */
+.start-screen__hint {
+  font-size: 11px;
+  color: rgba(255,255,255,0.35);
+  margin: 0;
+  font-family: 'Courier New', monospace;
+}
+
+/* ── Happy Holi headline ──────────────────────────────────── */
+.start-screen__happy-holi {
+  font-size: 20px;
+  font-weight: 900;
+  background: linear-gradient(90deg, #FF4081, #FF6D00, #FFEA00, #00E676, #00B0FF, #D500F9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-size: 200% auto;
+  animation: holiShift 2s linear infinite;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+/* ── Floating Holi banner words ───────────────────────────── */
+.start-screen__holi-banner {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.start-screen__holi-word {
+  position: absolute;
+  font-size: 13px;
+  font-weight: 700;
+  color: hsl(calc(var(--j) * 60 + 10), 90%, 65%);
+  opacity: 0;
+  animation: holiWordFloat calc(4s + var(--j) * 0.8s) ease-in-out infinite;
+  animation-delay: calc(var(--j) * 1.2s);
+  left: calc(5% + var(--j) * 22%);
+  top: 100%;
+  white-space: nowrap;
+  text-shadow: 0 0 8px currentColor;
+}
+
+@keyframes holiWordFloat {
+  0%   { top: 105%; opacity: 0;   transform: rotate(-5deg); }
+  15%  { opacity: 0.9; }
+  85%  { opacity: 0.9; }
+  100% { top: -10%;  opacity: 0;   transform: rotate(5deg);  }
+}
